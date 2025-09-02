@@ -19,12 +19,19 @@
             <input type="text" name="location" placeholder="Location" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="tel" name="phone" placeholder="Phone Number" required>
-            <input type="text" name="type" placeholder="Waste Type" required>
+            <select name="type" required style="padding:8px;margin-right:8px;">
+                <option value="">Select Waste Type</option>
+                <option value="Dry Waste">Dry Waste</option>
+                <option value="Wet Waste">Wet Waste</option>
+                <option value="Liquid Waste">Liquid Waste</option>
+                <option value="E-Waste">E-Waste</option>
+                <option value="Medical Waste">Medical Waste</option>
+            </select>
             <input type="number" name="amount" placeholder="Amount (kg)" required>
             <select name="status" required style="padding:8px;margin-right:8px;">
                 <option value="">Select Status</option>
-                <option value="Cleaned" style="color:green;">Cleaned</option>
-                <option value="Not Cleaned" style="color:red;">Not Cleaned</option>
+                <option value="Cleaned" style="color:green;font-weight:bold;">Cleaned</option>
+                <option value="Not Cleaned" style="color:red;font-weight: bold;">Not Cleaned</option>
             </select>
             <input type="file" name="photo" accept="image/*">
             <button type="submit">Add Entry</button>
