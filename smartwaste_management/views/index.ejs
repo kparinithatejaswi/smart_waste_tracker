@@ -91,9 +91,14 @@
                             <% } %>
                         </td>
                         <td>
-                            <form action="/delete/<%= idx %>" method="POST" style="display:inline;">
+                      
+                            <td>
+                              <form action="/delete/<%= record.id %>" method="POST" style="display:inline;">
                                 <button type="submit">Delete</button>
-                            </form>
+                              </form>
+                              <a href="/edit/<%= record.id %>"><button type="button">Edit</button></a>
+                            </td>
+                            
                         </td>
                     </tr>
                     <% }); %>

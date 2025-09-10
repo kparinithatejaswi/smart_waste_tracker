@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Wet Waste",
+    "amount": 4,
+    "name": "Parinitha",
+    "location": "India",
+    "email": "test@gmail.com",
+    "phone": "687373883",
+    "status": "Not Cleaned",
+    "photo": null
+  },
+  {
+    "type": "Wet Waste",
+    "amount": 4,
+    "name": "Teju",
+    "location": "India",
+    "email": "ttshh@gmail.com",
+    "phone": "98748378383",
+    "status": "Not Cleaned",
+    "photo": null
+  },
+  {
+    "type": "E-Waste",
+    "amount": 2,
+    "name": "Koripalli Parinitha Tejaswi",
+    "location": "India",
+    "email": "kparinithatejaswi@gmail.com",
+    "phone": "8368378282",
+    "status": "Not Cleaned",
+    "photo": null
+  }
+]

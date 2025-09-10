@@ -77,7 +77,65 @@ app.post('/add', upload.single('photo'), (req, res) => {
   }
   res.redirect('/');
 });
+// ...existing code...
 
+app.get('/edit/:idx', (req, res) => {
+  const idx = parseInt(req.params.idx);
+  if (isNaN(idx) || !wasteRecords[idx]) {
+    return res.status(404).send('Record not found');
+  }
+  res.render('edit', { idx, record: wasteRecords[idx] });
+});
+
+app.post('/edit/:idx', upload.single('photo'), (req, res) => {
+  const idx = parseInt(req.params.idx);
+  if (isNaN(idx) || !wasteRecords[idx]) {
+    return res.status(404).send('Record not found');
+  }
+  const body = req.body || {};
+  const { type, amount, name, location, email, phone, status } = body;
+  let photo = wasteRecords[idx].photo; // Keep existing photo if not updated
+  if (req.file) {
+    photo = '/uploads/' + req.file.filename;
+  }
+  if (type && amount && name && location && email && phone && status) {
+    wasteRecords[idx] = {
+      type,
+      amount: Number(amount),
+      name,
+      location,
+      email,
+      phone,
+      status,
+      photo
+    };
+    saveWaste();
+  } else {
+    console.warn('Missing fields in /edit:', body);
+  }
+  res.redirect('/');
+});
+
+ app.get('/edit/:id', (req, res) => {
+  const id = req.params.id;
+  const record = wasteRecords.find(r => r.id === id);
+  if (!record) return res.status(404).send('Record not found');
+  res.render('edit', { record });
+});
+
+app.post('/edit/:id', (req, res) => {
+  const id = req.params.id;
+  const { type, amount } = req.body;
+  const record = wasteRecords.find(r => r.id === id);
+  if (!record) return res.status(404).send('Record not found');
+  record.type = type;
+  record.amount = amount;
+  fs.writeFileSync('waste-data.json', JSON.stringify(wasteRecords, null, 2));
+  res.redirect('/');
+});
+// ...existing code...
+
+// ...existing code...
 app.post('/delete/:idx', (req, res) => {
   const idx = parseInt(req.params.idx);
   if (!isNaN(idx)) {
